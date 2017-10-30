@@ -1,0 +1,48 @@
+﻿Public Class Game
+    Dim StringLength As Integer = 6
+
+
+
+
+
+
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles ArrowDisplay.Click
+
+    End Sub
+
+    Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
+        GenerateString()
+    End Sub
+
+
+
+
+
+
+    Sub GenerateString()
+        Dim Random As New Random
+        Dim ArrayOutNumbers(StringLength) As Integer
+        For i = 1 To (StringLength)
+            ArrayOutNumbers(i) = Random.Next(1, 5)
+
+        Next
+        DisplaySequence(ArrayOutNumbers)
+
+    End Sub
+    Sub DisplaySequence(ArrayOutNumbers)
+        Dim Count As Integer
+        Count = 1
+        Do
+            If ArrayOutNumbers(Count) = 1 Then
+                ArrowDisplay.Image = My.Resources.UpArrow
+            ElseIf ArrayOutNumbers(Count) = 2 Then
+                ArrowDisplay.Image = My.Resources.DownArrow
+            ElseIf ArrayOutNumbers(Count) = 3 Then
+                ArrowDisplay.Image = My.Resources.ArrowLeft
+            ElseIf ArrayOutNumbers(Count) = 4 Then
+                ArrowDisplay.Image = My.Resources.ArrowRight
+            End If
+        Loop Until Count = StringLength
+    End Sub
+End Class
